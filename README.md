@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🏅 Olympics Data Analysis
 
 An interactive data analysis and visualization project based on historical Olympic Games data. The project uses Python, Pandas, Plotly, and Streamlit to explore Olympic medal statistics, athletes, countries, and overall trends.
@@ -72,3 +73,7 @@ The project uses historical Olympic Games data containing information about athl
 
 Civil Engineering Student
 MNNIT Allahabad
+=======
+# Olympics_Data_Analysis_Project
+Will add later
+>>>>>>> 130400bbf696cbbc9adfb05a681ae23152f3be13
