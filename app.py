@@ -919,6 +919,24 @@ if user_menu == 'Athlete wise Analysis':
     fig.update_layout(xaxis_title='Year', yaxis_title='No.of Athletes participated',title='Men vs women participation')
     st.plotly_chart(fig, use_container_width=True)
 
+
+#comparison between two athletes
+st.title('')
+st.title('Compare two Athletes')
+n1=np.unique(df['Name']).tolist()
+n1.sort()
+n2=np.unique(df['Name']).tolist()
+n2.sort()
+select_name1=st.selectbox('Select First Athlete',n1)
+select_name2=st.selectbox('Select Second Athlete',n2)
+compare_df=helper.compare(df, select_name1, select_name2)
+st.table(compare_df)
+
+
+
+
+
+
 #____________________________________________________-Year_wise_analysis_________________________________________________________________-
 if user_menu=='Year-wise Analysis':
     ## frontend
@@ -1115,6 +1133,9 @@ if user_menu=='Year-wise Analysis':
     fig.update_xaxes(dtick=8)
     fig.update_yaxes(dtick=100)
     st.plotly_chart(fig)
+
+    ## Compare any two athletes
+
 #___________________________________________________________Good Luck___________________________________________________________________________
 
 
