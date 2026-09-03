@@ -353,13 +353,13 @@ def men_medal_women(df,region):
       return Z
 #___________________ compare two athletes _____________________________________________________________
 def compare(df, n1, n2):
-    a = df[df['Name'] == n1].groupby(['Name', 'region', 'Sport'])[['Gold', 'Bronze', 'Silver']].sum()
+    a = df[df['Name'] == n1].groupby(['Name', 'region', 'Sport'])[['Gold', 'Bronze', 'Silver']].sum().reset_index()
     a['Total_medals'] = a['Gold'] + a['Silver'] + a['Bronze']
 
     a['First_time_participated'] = df[df['Name'] == n1]['Year'].min()
     a['won_first_medal_in'] = df[df['Name'] == n1].dropna(subset=['Medal'])['Year'].min()
 
-    b = df[df['Name'] == n2].groupby(['Name', 'region', 'Sport'])[['Gold', 'Bronze', 'Silver']].sum()
+    b = df[df['Name'] == n2].groupby(['Name', 'region', 'Sport'])[['Gold', 'Bronze', 'Silver']].sum().reset_index()
     b['Total_medals'] = b['Gold'] + b['Silver'] + b['Bronze']
     b['First_time_participated'] = df[df['Name'] == n2]['Year'].min()
     b['won_first_medal_in'] = df[df['Name'] == n2].dropna(subset=['Medal'])['Year'].min()
