@@ -19,12 +19,12 @@ df = preprocessor.preprocess(df, region_df)
 st.sidebar.image('https://img.olympics.com/images/image/private/t_social_share_thumb/f_auto/v1538355600/primary/onpsxnx7v5atmhxvdipc')
 st.sidebar.title('Summer Olympic Analysis')
 
-# home=st.sidebar.selectbox('Go Home',['click here'])
+#____________________________________________ Creating sidebars__________________________________________________________________________
 user_menu = st.sidebar.selectbox(
     'Select type of Analysis',
     ['Home', 'Medal Tally', 'Overall Analysis', 'Country-wise Analysis', 'Athlete wise Analysis','Year-wise Analysis'])
 
-
+#___________________________________Sidebar_correction_text_______________________________________________________________________________
 # 1. Page Configuration (Must remain first)
 st.set_page_config(
     page_title="Summer Olympic Analysis",
@@ -32,6 +32,7 @@ st.set_page_config(
     layout="wide"
 )
 # Force bright white text and labels across the entire sidebar everywhere
+
 st.markdown(
     """
 <style>
@@ -70,31 +71,17 @@ st.markdown(
 """,
     unsafe_allow_html=True,
 )
-
+#_____________________________________________Datasets Loading and call to preprocessor.py__________________________________________________________________________
 # 2. Data Loading & Preprocessing
 df = pd.read_csv('athlete_events.csv')
 region_df = pd.read_csv('noc_regions.csv')
 df = preprocessor.preprocess(df, region_df)
-
-# 3. Sidebar Setup
-# st.sidebar.title("Summer Olympic Analysis")
-# user_menu = st.sidebar.selectbox(
-#     "Select an Option",
-#     [
-#         "Select type of Analysis",
-#         "Medal Tally",
-#         "Overall Analysis",
-#         "Country-wise Analysis",
-#         "Athlete wise Analysis",
-#         "Year-wise Analysis"
-#     ],
-#     key="main_menu_select"
-# )
+#______________________________________________________________________Home page Frontend________________________________________________________
 
 # 4. Route Styling & Pages
 if user_menu == "Home":
 
-    # Full Background Theme for Landing Page Only
+# Full Background Theme for Landing Page Only
     st.markdown(
         """
         <style>
@@ -159,7 +146,7 @@ if user_menu == "Home":
         .typewriter-text {
             font-size: 3.5rem;
             font-weight: 15data-testid="stMetricValue"00;
-            letter-spacing: 5px;
+            letter-spacing: 2px;
             color: #0b0f19 !important;
             display: inline-block;
             overflow: hidden;
@@ -205,7 +192,7 @@ if user_menu == "Home":
         unsafe_allow_html=True
     )
 
-    # Hero Section
+# Hero Section_________________Hero section______________________________________________________________________________________
     st.markdown(
         """
         <div class="hero-fullscreen">
@@ -213,7 +200,7 @@ if user_menu == "Home":
             <img src="https://pngimg.com/uploads/olympic_rings/olympic_rings_PNG15.png" 
                  style="width: 150px; margin-bottom: 30px;" /><br>
             <div style="display:flex; justify-content: center;">
-                <span class="typewriter-text">FIND OLYMPIC RECORDS....</span>
+                <span class="typewriter-text">OLYMPIC RECORDS AND ANALYSIS....</span>
             </div>
             <div class="hero-sub-clean">
                 120 Years of Athletic Excellence & World Records (1896 – 2016)
@@ -222,6 +209,7 @@ if user_menu == "Home":
         """,
         unsafe_allow_html=True
     )
+#___________________________metric values ,font and weight__________________________________________________________________________________________________
     st.markdown(
         """
         <style>
@@ -284,8 +272,7 @@ if user_menu == "Home":
         st.metric(label="Sports Disciplines", value=f"{sports}")
     with col4:
         st.metric(label="Total Athletes", value='110k+')
-
-
+ #__________________________________________________selection_analysis_bar_show__________________________________________________________
 
     st.markdown("---")
     st.markdown(
@@ -303,6 +290,7 @@ if user_menu == "Home":
     """,
         unsafe_allow_html=True,
     )
+#_____________________________________________Cardboxes_______________________________________________________________________
     st.markdown("### 📊 What You Can Explore")
 
 
@@ -328,6 +316,7 @@ if user_menu == "Home":
             '<div class="card-box"><b>🏃 Athlete-wise Analysis</b><br>Age distributions, height vs. weight trends, and all-time legends.</div>',
             unsafe_allow_html=True,
         )
+  #___________________________________analysis_views_backgroun__________________________________________________________________
 
 
 # All Other Analysis Views (Shiny White Background)
@@ -359,13 +348,13 @@ else:
         """,
         unsafe_allow_html=True
     )
+#________________________________________________________________________________________________________________________________
 
 
 
+ #_________________________________________#Front view completed_____________________________________________________________
 
- #Front view completed year
-
-
+#___________________________________________ backend on sidebar selectbox ,Medal_tally________________________________________________________
 if user_menu=='Medal Tally':
     # st.header('Medal tally') - will look like a heading for the medal tally table
     st.sidebar.header('Medal tally')
@@ -381,33 +370,18 @@ if user_menu=='Medal Tally':
         st.title('Overall Performance of ' + selected_country+' in Summer Olympics')
     if selected_year!='Overall' and selected_country!='Overall':
         st.title(selected_country+' in '+ medal_df['City'][medal_df['Year'] == selected_year].unique()[0] +' Olympics '+ str(selected_year))
-        # medal_df['City'][medal_df['Year'] == 2016].unique()
-    # st.bar_chart(medal_tally)
+
     st.dataframe(medal_tally)
 
     # selected_year = st.session_state.get('selected_year', None)
     # selected_country = st.session_state.get('selected_country', None)
 
 
-
+#______________________________'Overall_Analysis___________________________________________________________________________________
 if user_menu=='Overall Analysis':
 
-
-
-
-
-
-
-   # this is title section
+#______________________________________cardboxes and title view__________________________________________________________________
     if user_menu == 'Overall Analysis':
-        # col1, col2 = st.columns([6, 10])
-        #
-        # with col1:
-        #     st.image("image.png", width=200)
-        #
-        # with col2:
-        #     st.title("")
-
 
         st.markdown("""
         <div style="
@@ -441,8 +415,7 @@ if user_menu=='Overall Analysis':
         Athletes = '110K+'
         # Nations = int(df['region'].drop_duplicates().shape[0]) ###206
         Nations='200+'
-
-        # CSS for cards
+#____________________________CSS for cards_____________________________________________________________________
         st.markdown("""
         <style>
         .card {
@@ -522,6 +495,8 @@ if user_menu=='Overall Analysis':
             """, unsafe_allow_html=True)
 
                    ### make it into dataframe
+ #_________________ Backend of Overall analysis______________________________________________________________________________
+
     nations_over_time=helper.data_over_time(df)
     fig = px.line(nations_over_time, x='Year', y='No. of countries participated')
     fig.update_xaxes(dtick=8)
@@ -545,6 +520,7 @@ if user_menu=='Overall Analysis':
     st.title('No.of Athletes Over the Years')
     st.plotly_chart(fig)
 
+
     st.title('No.of Events Over time FOR Every Sports')
     fig,ax=plt.subplots(figsize=(40,35))
     ax=sns.heatmap(
@@ -555,7 +531,7 @@ if user_menu=='Overall Analysis':
 
     st.title('Most Successful Athletes')
     sport_list=np.unique(df['Sport'].values).tolist() # this will sor
-        #df['Sport'].values.tolist().sort() will not work
+   #df['Sport'].values.tolist().sort() will not work
     sport_list.sort()
     sport_list.insert(0,'Overall')
 
@@ -563,8 +539,7 @@ if user_menu=='Overall Analysis':
     X=helper.most_successful(df,selected_sport)
     st.dataframe(X)
 
-   #Most successfull countries in a sport
-    #st.header('Most Successful Countries in '+selected_sport)
+   #Most Successful countries in a sport
     if selected_sport == 'Overall' :
           st.title('Most Successful countries in a sport')  # fetched
     if selected_sport!= 'Overall':
@@ -575,18 +550,7 @@ if user_menu=='Overall Analysis':
     # if st.empty:
     #         st.info('Select a sport')
 
-
-
-
-
-
-
-
-
-
-
-
-
+#_________________________________________________ Country_wise_Analysis____________________________________________________________________
 if user_menu== 'Country-wise Analysis' :
     col1, col2 = st.columns([1, 5])
 
@@ -597,15 +561,13 @@ if user_menu== 'Country-wise Analysis' :
         st.title("Country wise Analysis")
 
         st.info(' select country⮟⮟')
-        # st.title('𝘾𝙤𝙪𝙣𝙩𝙧𝙮-𝙬𝙞𝙨𝙚 𝘼𝙣𝙖𝙡𝙮𝙨𝙞𝙨')
+
         st.sidebar.subheader('Country-wise Analysis')
         st.sidebar.info('Select country⟶')
         st.sidebar.info('Select Sport⟶')
 
         country_list=np.unique(df['region'].dropna().values).tolist()
         country_list.sort()
-        # country_list.insert(0,'select a country')
-        #on removing sidebar(only st.selectbox) , selectbox will appear inside the c-w analysis
         # selected_country=st.sidebar.selectbox('Select  a  Country',country_list)
         selected_country = st.selectbox('Select  a  Country', country_list)
 
@@ -660,20 +622,10 @@ if user_menu== 'Country-wise Analysis' :
         fig.update_xaxes(dtick=8)
         fig.update_yaxes(dtick=100)
         st.plotly_chart(fig)
-
-
-
-
-
-
-
-
-
-
-
+#_________________________________________________________Athlete_wise_Analysis__________________________________________________
 #Now Athlete Wise Analysis
 if user_menu == 'Athlete wise Analysis':
-
+#_______________________________________ title_view_________________________________________________________________
     # if user_menu == 'Athlete wise Analysis':
     #     st.markdown("""
     #     <div style="
@@ -875,7 +827,7 @@ if user_menu == 'Athlete wise Analysis':
     if name2_df.empty:
         st.info("Select Athlete Name")
 
-    # year,event_name
+    # year,event_name and got results
     st.title('')
     st.title('Event-wise result in Olympics')
     st.text("ex: Athletics Men's 100 m results in 2012 Olympics ")
@@ -898,16 +850,8 @@ if user_menu == 'Athlete wise Analysis':
     st.table(choose_df)
     if choose_df.empty:
         st.info("This event was not held in the selected Olympic season.")
-    # if choose_df.empty:
-    #     msg_df = pd.DataFrame(
-    #         [['This event was not held in the selected Olympic season.']],
-    #         columns=['Result']
-    #     )
-    #     st.table(msg_df)
-    # else:
-    #     st.table(choose_df)
 
-    ####Append used here
+    ####Append used here ,Medal comparison with age
     athlete_df = df.drop_duplicates(subset=['Name', 'region'])
     x1 = athlete_df['Age'].dropna()
     x2 = athlete_df[athlete_df['Medal'] == 'Gold']['Age'].dropna()
@@ -924,7 +868,6 @@ if user_menu == 'Athlete wise Analysis':
     st.text('                  Plot shows distribution of Age for medals')
 
     st.plotly_chart(fig)
-
 
     x = []
     name = []
@@ -949,7 +892,7 @@ if user_menu == 'Athlete wise Analysis':
     st.title('Distribution of Age For Gold Medals(Every Sport)')
     st.plotly_chart(fig)
 
-    # drawing height_V_weight graph for a medal and for a sex for a sport
+# drawing height_V_weight graph for a medal and for a sex for a sport
     sport_list = np.unique(athlete_df['Sport']).tolist()
     sport_list.sort()
     sport_list.insert(0, 'Overall')
@@ -964,12 +907,11 @@ if user_menu == 'Athlete wise Analysis':
     ax = sns.scatterplot(x=temp_df['Weight'], y=temp_df['Height'], hue=temp_df['Medal'], style=temp_df['Sex'], s=35,
                          alpha=1)
     # fig.update_xaxes(dtick=10) for plotly not matplotlib
-    # st.title('Weight vs Height')
     st.title(selected_sport)
     st.pyplot(fig)
 
-    #####producing wrong results in graph....................................remember................############################
-    # men vs women participation
+#wrrr______________
+# men vs women participation
     st.title('Men vs Women participation Over years')
     final = helper.men_vs_women(df)
     fig = px.line(final, x='Year', y=['M', 'F','total'],
@@ -977,11 +919,11 @@ if user_menu == 'Athlete wise Analysis':
     fig.update_layout(xaxis_title='Year', yaxis_title='No.of Athletes participated',title='Men vs women participation')
     st.plotly_chart(fig, use_container_width=True)
 
-
+#____________________________________________________-Year_wise_analysis_________________________________________________________________-
 if user_menu=='Year-wise Analysis':
     ## frontend
+#_________________ title_view__________________________________________________________________________
 
-    import streamlit as st
     import streamlit.components.v1 as components
 
     card_html = """
@@ -1116,8 +1058,8 @@ if user_menu=='Year-wise Analysis':
     </body>
     </html>
     """
-
     components.html(card_html, height=240)
+#________________________________--code______________________________________________________________________________________________
     st.sidebar.header('Year-wise Analysis')# when we will open Year-wise analysis , this will we the heading of it in the sidebar
     st.sidebar.info('Select a year ⟶')
     st.sidebar.info('Select category⟶')
@@ -1128,9 +1070,6 @@ if user_menu=='Year-wise Analysis':
     year.insert(0, 'Select year')
     sex=np.unique(df['Sex']).tolist()
     sex.insert(0,'Overall')
-    # event1 = np.unique(df['Event']).tolist()
-    # event1.sort()
-    # event1.insert(0, 'select name of the event')
     select_year = st.selectbox('Select year', year)
     select_sex =st.selectbox('Select category',sex)
     #st.title('T-10 Athletes of ' + str(select_year))
@@ -1148,8 +1087,6 @@ if user_menu=='Year-wise Analysis':
 
 
     ##top 10 athlete in a sport in a given year
-    # country=np.unique(df['region']).tolist()
-    # country.insert(0,'Overall Analysis')
     sport = np.unique(df['Sport']).tolist()
     sport.insert(1,'Overall Analysis')
     sport.insert(0,'Select any sport')
@@ -1162,13 +1099,6 @@ if user_menu=='Year-wise Analysis':
     st.table(top10_sport_df)
     if select_sport== 'Select any sport':
         st.info('select year ↑')
-    # if select_year!='Select year':
-
-    # else: st.empty
-    #     st.info(select_sport+ ' does not exists in Olympics '+str(select_year) +' for '+select_sex )
-    #     #polo was not a sport category for F in 1900
-
-
 
     st.title('')
     st.title('No.of athletes participated over the years for a country')
@@ -1185,6 +1115,7 @@ if user_menu=='Year-wise Analysis':
     fig.update_xaxes(dtick=8)
     fig.update_yaxes(dtick=100)
     st.plotly_chart(fig)
+#___________________________________________________________Good Luck___________________________________________________________________________
 
 
 
