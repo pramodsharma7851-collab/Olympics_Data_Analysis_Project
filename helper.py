@@ -351,6 +351,18 @@ def men_medal_women(df,region):
       Z=Z.pivot_table(index='Year',columns='Sex',values='Total_medals').fillna(0).astype('int').reset_index()
       Z['total']=Z['F']+Z['M']
       return Z
+#_______________x________________will add_____________________x_____________________________________________________________________
+# men and women participation for a country over the years ________
+# def men_participate_women(df,region):
+#     df[df[]]
+
+
+
+
+
+
+
+
 #___________________ compare two athletes _____________________________________________________________
 
 def compare(df, n1, n2):

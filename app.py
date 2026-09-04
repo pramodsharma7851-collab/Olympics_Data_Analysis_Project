@@ -29,7 +29,7 @@ user_menu = st.sidebar.selectbox(
 # 1. Page Configuration (Must remain first)
 st.set_page_config(
     page_title="Olympic Data Analysis ",
-    page_icon="file:///C:/Users/pramo/Downloads/WhatsApp%20Image%202026-09-04%20at%207.25.44%20AM.jpeg",
+    page_icon="https://static.vecteezy.com/system/resources/previews/036/105/753/non_2x/sankt-petersburg-russia-01-02-2024-olympic-rings-olympic-games-logo-illustration-free-vector.jpg",
     layout="wide"
 )
 # Force bright white text and labels across the entire sidebar everywhere
@@ -630,6 +630,8 @@ if user_menu== 'Country-wise Analysis' :
         fig.update_xaxes(dtick=8)
         fig.update_yaxes(dtick=100)
         st.plotly_chart(fig)
+        #men vs women medals for selected country
+
 #_________________________________________________________Athlete_wise_Analysis__________________________________________________
 #Now Athlete Wise Analysis
 if user_menu == 'Athlete wise Analysis':
