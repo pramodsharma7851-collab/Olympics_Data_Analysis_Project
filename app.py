@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.figure_factory as ff
 import streamlit.components.v1 as components
+import base64
 
 
 df = pd.read_csv('athlete_events.csv')
@@ -27,8 +28,8 @@ user_menu = st.sidebar.selectbox(
 #___________________________________Sidebar_correction_text_______________________________________________________________________________
 # 1. Page Configuration (Must remain first)
 st.set_page_config(
-    page_title="Summer Olympic Analysis",
-    page_icon="🏅",
+    page_title="Olympic Data Analysis ",
+    page_icon="file:///C:/Users/pramo/Downloads/WhatsApp%20Image%202026-09-04%20at%207.25.44%20AM.jpeg",
     layout="wide"
 )
 # Force bright white text and labels across the entire sidebar everywhere
@@ -348,11 +349,18 @@ else:
         """,
         unsafe_allow_html=True
     )
+
+    # =====================================================
+    # ATHLETE IMAGE SLIDER
+    # Add this at the END of your existing front page
+    # =====================================================
+    #will add later ______________On progress____________________________________________
+
 #________________________________________________________________________________________________________________________________
 
 
 
- #_________________________________________#Front view completed_____________________________________________________________
+ #_x________________________________________#Front view completed__________________________________________________________x___
 
 #___________________________________________ backend on sidebar selectbox ,Medal_tally________________________________________________________
 if user_menu=='Medal Tally':
@@ -787,7 +795,7 @@ if user_menu == 'Athlete wise Analysis':
             <span class="timeline-endpoint">2016</span>
         </div>
         <div class="info-guide">
-            💡 <strong>Pro Tip:</strong> Search for any athlete to uncover individual medal counts, age-distribution profiles,Weight vs Height Distribution  relative to medals .
+             <strong>Pro Tip:</strong> Search for any athlete to uncover individual medal counts, age-distribution profiles,Weight vs Height Distribution  relative to medals .
         </div>
     </div>
     </body>
@@ -920,21 +928,20 @@ if user_menu == 'Athlete wise Analysis':
     st.plotly_chart(fig, use_container_width=True)
 
 
-#comparison between two athletes
-# st.title('')
-# st.title('Compare two Athletes')
-# n1=np.unique(df['Name']).tolist()
-# n1.sort()
-# n2=np.unique(df['Name']).tolist()
-# n2.sort()
-# select_name1=st.selectbox('Select First Athlete',n1)
-# select_name2=st.selectbox('Select Second Athlete',n2)
-# compare_df=helper.compare(df, select_name1, select_name2)
-# st.table(compare_df)
+# comparison between two athletes
 
 
-
-
+    st.title('')
+    st.title('Compare two Athletes')
+    n1=np.unique(df['Name']).tolist()
+    n1.sort()
+    n2=np.unique(df['Name']).tolist()
+    n2.sort()
+    select_name1=st.selectbox('Select First Athlete',n1)
+    select_name2=st.selectbox('Select Second Athlete',n2)
+    compare_df=helper.compare(df, select_name1, select_name2)
+    st.header(select_name1 +' Vs  '+' '+select_name2)
+    st.dataframe(compare_df)
 
 
 #____________________________________________________-Year_wise_analysis_________________________________________________________________-
