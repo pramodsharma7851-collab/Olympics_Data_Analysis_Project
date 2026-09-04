@@ -931,17 +931,17 @@ if user_menu == 'Athlete wise Analysis':
 # comparison between two athletes
 
 
-    # st.title('')
-    # st.title('Compare two Athletes')
-    # n1=np.unique(df['Name']).tolist()
-    # n1.sort()
-    # n2=np.unique(df['Name']).tolist()
-    # n2.sort()
-    # select_name1=st.selectbox('Select First Athlete',n1)
-    # select_name2=st.selectbox('Select Second Athlete',n2)
-    # compare_df=helper.compare(df, select_name1, select_name2)
-    # st.header(select_name1 +' Vs  '+' '+select_name2)
-    # st.dataframe(compare_df)
+    st.title('')
+    st.title('Compare two Athletes')
+    n1=np.unique(df['Name']).tolist()
+    n1.sort()
+    n2=np.unique(df['Name']).tolist()
+    n2.sort()
+    select_name1=st.selectbox('Select First Athlete',n1)
+    select_name2=st.selectbox('Select Second Athlete',n2)
+    compare_df=helper.compare(df, select_name1, select_name2)
+    st.header(select_name1 +' Vs  '+' '+select_name2)
+    st.dataframe(compare_df)
 
 
 #____________________________________________________-Year_wise_analysis_________________________________________________________________-
