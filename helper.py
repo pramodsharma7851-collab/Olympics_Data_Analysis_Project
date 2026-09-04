@@ -365,8 +365,8 @@ def compare(df, n1, n2):
     b['Total_medals'] = b['Gold'] + b['Silver'] + b['Bronze']
     b['Debut'] = df[df['Name'] == n2]['Year'].min()
     b['First_Medal'] = df[df['Name'] == n2].dropna(subset=['Medal'])['Year'].min()
-
-    return pd.concat([a, b], axis=0)
+    Z=pd.concat([a, b], axis=0)
+    return Z
 
 
 
