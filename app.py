@@ -21,6 +21,7 @@ st.sidebar.image('https://img.olympics.com/images/image/private/t_social_share_t
 st.sidebar.title('Summer Olympic Analysis')
 
 #____________________________________________ Creating sidebars__________________________________________________________________________
+
 user_menu = st.sidebar.selectbox(
     'Select type of Analysis',
     ['Home', 'Medal Tally', 'Overall Analysis', 'Country-wise Analysis', 'Athlete wise Analysis','Year-wise Analysis'])
@@ -33,7 +34,7 @@ st.set_page_config(
     layout="wide"
 )
 # Force bright white text and labels across the entire sidebar everywhere
-
+#     url("https://static.stacker.com/s3fs-public/styles/sar_screen_maximum_large/s3/UsainBolt1FB7X_3.png");
 st.markdown(
     """
 <style>
@@ -110,7 +111,7 @@ if user_menu == "Home":
             background-color: #70c4f4;
             background-image: 
                 linear-gradient(180deg, rgba(220, 250, 244, 0.72) 0%, rgba(224, 242, 254, 0.82) 40%, rgba(185, 28, 28, 0.45) 100%),
-                url("https://static.stacker.com/s3fs-public/styles/sar_screen_maximum_large/s3/UsainBolt1FB7X_3.png");
+                url("https://s115-grog.freeconvert.com/task/6aa7e3ddc12b789be2f87679/WhatsApp%20Image%202026-09-14%20at%205.34.05%20PM.png");
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center bottom;
