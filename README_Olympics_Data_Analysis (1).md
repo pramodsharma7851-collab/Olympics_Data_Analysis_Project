@@ -2,7 +2,7 @@
 
 An interactive **Olympics Data Analysis dashboard** built with **Python, Pandas, and Streamlit** to explore Olympic history, medal records, countries, athletes, sports, and events from **1896 to 2016**.
 
-The project transforms raw Olympic data into an interactive dashboard where users can explore overall Olympic trends, medal tallies, country-wise performance, athlete-level records, and year-wise analysis.
+The project transforms raw Olympic data into an interactive WebApp where users can explore overall Olympic trends, medal tallies, country-wise performance, athlete-level records, and year-wise analysis.
 
 ## 📌 Project Overview
 
